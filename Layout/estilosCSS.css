@@ -1,0 +1,35 @@
+.rate,
+.star {
+    font-size: 25px;
+    color: orange;
+}
+.t-30 {
+    font-size: 25;
+}
+body {
+  background-image: none;
+  background-color: #d2f4e7; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+
+  }
+
+  h1{
+      font-size: 50px !important;
+      font-family: 'Segoe UI Light';
+      color:slategrey !important;
+      text-align: center;!important;
+      align-items: center;
+
+  }
+.card{
+
+    background-color: #bfd8bd;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    border-radius: 100%;
+
+
+}
+
