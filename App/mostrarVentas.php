@@ -57,41 +57,63 @@ include ("../Conexion/cn.php");
 <div class="container mt-5">
     <div class="d-flex justify-content-end mb-5">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarVenta" style="background: #68B0AB !important;">
-        Agregar
+            Agregar
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"></path></svg>
+            </span>
         </button>
         <!-- Modal -->
         <div class="modal fade" id="agregarVenta" tabindex="-1" aria-labelledby="agregarVentaLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="agregarVentaLabel">Modal title</h5>
+                    <h5 class="modal-title" id="agregarVentaLabel">Agregar venta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label class="form-label" for="form12">Nombre</label>
+                            <label class="form-label" for="form12">Fecha</label>
+                            <input type="text" id="form12" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="form12">Hora</label>
+                            <input type="text" id="form12" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="form12">Cantidad</label>
+                            <div class="input-group">
+                                <input type="text" id="form12" class="form-control" />
+                                <div class="input-group-text">@</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="form12">Tipo de Pago</label>
+                            <input type="text" id="form12" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="form12">Total</label>
                             <input type="text" id="form12" class="form-control" />
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
                 </div>
                 </div>
             </div>
         </div>
     </div>
-    <table class="table table-success table-striped">
+    <table class="table table-success table-striped table-hover">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">fecha</th>
-            <th scope="col">hora</th>
-            <th scope="col">cantidad</th>
-            <th scope="col">tipo pago</th>
-            <th scope="col">total</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Tipo de pago</th>
+            <th scope="col">Total</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Fecha</th>
         </tr>
         </thead>
         <tbody>
@@ -101,14 +123,13 @@ include ("../Conexion/cn.php");
 
         $result = $conexion->query($query);
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) : ?>
-
-            <tr>
+            <tr <?php echo $row['Id_Venta'] ?> >
                 <td><?php echo $row['Id_Venta'] ?></td>
-                <td><?php echo $row['Fecha'] ?></td>
-                <td><?php echo $row['Hora'] ?></td>
-                <td><?php echo $row['Cantidad'] ?></td>
                 <td><?php echo $row['Tipo_Pago'] ?></td>
+                <td><?php echo $row['Cantidad'] ?></td>
                 <td><?php echo $row['Total'] ?></td>
+                <td><?php echo $row['Hora'] ?></td>
+                <td><?php echo $row['Fecha'] ?></td>
             </tr>
 <?php endwhile; ?>
         </tbody>
