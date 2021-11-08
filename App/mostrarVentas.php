@@ -59,7 +59,7 @@ include ("../Conexion/cn.php");
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarVenta" style="background: #68B0AB !important;">
             Agregar
             <span>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"></path></svg>
+                <svg style="margin-bottom: 4px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"></path></svg>
             </span>
         </button>
         <!-- Modal -->
@@ -73,18 +73,10 @@ include ("../Conexion/cn.php");
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label class="form-label" for="form12">Fecha</label>
-                            <input type="text" id="form12" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="form12">Hora</label>
-                            <input type="text" id="form12" class="form-control" />
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label" for="form12">Cantidad</label>
                             <div class="input-group">
                                 <input type="text" id="form12" class="form-control" />
-                                <div class="input-group-text">@</div>
+                                <div class="input-group-text">$</div>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -93,6 +85,14 @@ include ("../Conexion/cn.php");
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="form12">Total</label>
+                            <input type="text" id="form12" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="form12">Fecha</label>
+                            <input type="text" id="form12" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="form12">Hora</label>
                             <input type="text" id="form12" class="form-control" />
                         </div>
                     </form>
