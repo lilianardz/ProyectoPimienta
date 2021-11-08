@@ -9,6 +9,7 @@ include ("../Conexion/cn.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="../assets/css/mdb.min.css" rel="stylesheet"/>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <title>Pimienta</title>
 </head>
 <body>
@@ -55,7 +56,32 @@ include ("../Conexion/cn.php");
 <!-- Navbar -->
 <div class="container mt-5">
     <div class="d-flex justify-content-end mb-5">
-        <button type="button" class="btn btn-success" style="background: #68B0AB !important;">Agregar</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarVenta" style="background: #68B0AB !important;">
+        Agregar
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="agregarVenta" tabindex="-1" aria-labelledby="agregarVentaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarVentaLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label" for="form12">Nombre</label>
+                            <input type="text" id="form12" class="form-control" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
     <table class="table table-success table-striped">
         <thead>
