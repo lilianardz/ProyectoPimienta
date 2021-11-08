@@ -89,11 +89,11 @@ include ("../Conexion/cn.php");
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="fecha">Fecha</label>
-                            <input type="text" id="fecha" name="fecha" class="form-control" />
+                            <input type="date" id="fecha" name="fecha" class="form-control" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="hora">Hora</label>
-                            <input type="text" id="hora" name="hora" class="form-control" />
+                            <input type="time" id="hora" name="hora" class="form-control" />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -135,6 +135,6 @@ include ("../Conexion/cn.php");
         </tbody>
     </table>
 </div>
-<script src="assets/js/mdb.min.js"></script>
+<script src="../assets/js/mdb.min.js"></script>
 </body>
 </html>
