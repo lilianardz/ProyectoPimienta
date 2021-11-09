@@ -22,7 +22,7 @@
                     <br>
 <!--                    <img src="https://image.flaticon.com/icons/svg/1945/1945652.svg" class="card-img-top">-->
                     <div class="card-body">
-                        <form action="validarSesion.php" method="POST">
+                        <form action="paginaInicio.php" method="POST">
                             <div class="form-group">
 
                                 <input placeholder="Usuario" type="text" class="form-control" name="txtUsuario" id="txtUsuario" aria-describedby="emailHelp" required>

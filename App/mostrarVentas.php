@@ -15,7 +15,7 @@ include ("../Conexion/cn.php");
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white" style="background: #68B0AB !important;box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.25);">
     <div class="container">
-        <a class="navbar-brand" href="#">Inicio</a>
+        <a class="navbar-brand" href="paginaInicio.php">Inicio</a>
         <div class="flex-grow-1"></div>
         <button
                 class="navbar-toggler"
@@ -37,7 +37,7 @@ include ("../Conexion/cn.php");
                     </a>
                 </li>
                 <li class="nav-item d-flex">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link active" href="mostrarVentas.php">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M2 17h20v4H2v-4M6.25 7H9V6H6V3h8v3h-3v1h6.8c1 0 2 1 2.2 2l.5 7h-17l.55-7c0-1 1-2 2.2-2M13 9v2h5V9h-5M6 9v1h2V9H6m3 0v1h2V9H9m-3 2v1h2v-1H6m3 0v1h2v-1H9m-3 2v1h2v-1H6m3 0v1h2v-1H9M7 4v1h6V4H7z" fill="currentColor"></path></svg>
                         Venta
                     </a>
