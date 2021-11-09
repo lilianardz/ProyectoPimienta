@@ -109,8 +109,8 @@ include ("../Conexion/cn.php");
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Cantidad</th>
             <th scope="col">Tipo de pago</th>
+            <th scope="col">Cantidad</th>
             <th scope="col">Total</th>
             <th scope="col">Hora</th>
             <th scope="col">Fecha</th>
