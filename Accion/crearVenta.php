@@ -13,5 +13,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->execute();
     echo $stmt->error;
-    // header("location: ../App/mostrarVentas.php");
+    header("location: ../App/mostrarVentas.php");
 }

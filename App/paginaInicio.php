@@ -119,7 +119,7 @@ include("../Conexion/cn.php");
         <div class="form-group">
             <div class="text-center">
                 <br>
-                <a href=#><input type="button" value="Captación y secado" class="btn btn-outline-dark"></a>
+                <a href=#><input type="button" value="Captación y secado" class="btn btn-light"></a>
             </div>
         </div>
     </div>
