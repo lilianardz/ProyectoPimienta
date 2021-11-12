@@ -72,7 +72,6 @@ include ("../Conexion/cn.php");
                 <th scope="col">Tipo de pago</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Total</th>
-                <th scope="col">Hora</th>
                 <th scope="col">Fecha</th>
                 <th scope="col" class="justify-center">Acciones</th>
             </tr>
@@ -80,7 +79,7 @@ include ("../Conexion/cn.php");
         <tbody>
         <?php
 
-        $query = 'select Id_Venta, Fecha, Hora, Cantidad, Tipo_Pago, Total from Venta';
+        $query = 'select Id_Venta, Fecha, Cantidad, Tipo_Pago, Total from Venta';
 
         $result = $conexion->query($query);
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) : ?>
@@ -89,7 +88,6 @@ include ("../Conexion/cn.php");
                 <td><?php echo $row['Tipo_Pago'] ?></td>
                 <td><?php echo $row['Cantidad'] ?></td>
                 <td><?php echo $row['Total'] ?></td>
-                <td><?php echo $row['Hora'] ?></td>
                 <td><?php echo $row['Fecha'] ?></td>
                 <td class="justify-center">
                     <button type="button" onclick="editarVenta(<?php echo $row['Id_Venta'] ?>, '<?php echo $row['Fecha'] ?>')" class="btn btn-light shadow-0 botonEditar" data-bs-toggle="modala" data-bs-target="#actualizarVenta" style="background: transparent !important;">
