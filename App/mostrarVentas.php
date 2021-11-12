@@ -9,7 +9,9 @@ include ("../Conexion/cn.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="../assets/css/mdb.min.css" rel="stylesheet"/>
+    <link href="../assets/css/estilos.css" rel="stylesheet"/>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sweetalert2@11.js"></script>
     <title>Pimienta</title>
 </head>
 <body>
@@ -56,68 +58,24 @@ include ("../Conexion/cn.php");
 <!-- Navbar -->
 <div class="container mt-5">
     <div class="d-flex justify-content-end mb-5">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarVenta" style="background: #68B0AB !important;">
+        <button type="button" class="btn btn-primary" id="agregarBoton" style="background: #68B0AB !important;">
             Agregar
             <span>
                 <svg style="margin-bottom: 4px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"></path></svg>
             </span>
         </button>
-        <!-- Modal -->
-        <div class="modal fade" id="agregarVenta" tabindex="-1" aria-labelledby="agregarVentaLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <form action="../Accion/crearVenta.php" method="POST">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="agregarVentaLabel">Agregar venta</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label" for="cantidad">Cantidad</label>
-                            <div class="input-group">
-                                <input type="text" id="cantidad" name="cantidad" class="form-control" />
-                                <div class="input-group-text">$</div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="tipoPago">Tipo de Pago</label>
-                            <select id="tipoPago" class="form-control" name="tipoPago">
-                                <option>Efectivo</option>
-                                <option>Tarjeta</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="total">Total</label>
-                            <input type="text" id="total" name="total" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="fecha">Fecha</label>
-                            <input type="date" id="fecha" name="fecha" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="hora">Hora</label>
-                            <input type="time" id="hora" name="hora" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
-                </form>
-                </div>
-            </div>
-        </div>
     </div>
     <table class="table table-success table-striped table-hover">
         <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Tipo de pago</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Total</th>
-            <th scope="col">Hora</th>
-            <th scope="col">Fecha</th>
-        </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipo de pago</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Total</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Fecha</th>
+                <th scope="col" class="justify-center">Acciones</th>
+            </tr>
         </thead>
         <tbody>
         <?php
@@ -133,77 +91,73 @@ include ("../Conexion/cn.php");
                 <td><?php echo $row['Total'] ?></td>
                 <td><?php echo $row['Hora'] ?></td>
                 <td><?php echo $row['Fecha'] ?></td>
-                <td>
-<!--                    <input type="button" value="" class="btn btn-light">-->
-                    <div class="d-flex justify-content-end mb-5">
-                        <button type="button" class="btn btn-light" data-bs-toggle="modala" data-bs-target="#actualizarVenta" style="background: #68B0AB !important;">
-
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7H5V5h7V3H5m12.78 1a.69.69 0 0 0-.48.2l-1.22 1.21l2.5 2.5L19.8 6.7c.26-.26.26-.7 0-.95L18.25 4.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L8 13.5V16h2.5l7.37-7.38l-2.5-2.5z" fill="currentColor"></path></svg>
-                            </span>
-                        </button>
-
-                        <div class="modal fade" id="actualizarVenta" tabindex="-1" aria-labelledby="actualizarVentaLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <form action="../Accion/actualizarVenta.php" method="POST">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="actualizarVentaLabel">Actualizar venta</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="cantidad">Cantidad</label>
-                                                <div class="input-group">
-                                                    <input type="text" id="cantidad" name="cantidad" class="form-control" />
-                                                    <div class="input-group-text">$</div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="tipoPago">Tipo de Pago</label>
-                                                <select id="tipoPago" class="form-control" name="tipoPago">
-                                                    <option>Efectivo</option>
-                                                    <option>Tarjeta</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="total">Total</label>
-                                                <input type="text" id="total" name="total" class="form-control" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="fecha">Fecha</label>
-                                                <input type="date" id="fecha" name="fecha" class="form-control" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="hora">Hora</label>
-                                                <input type="time" id="hora" name="hora" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                        </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
+                <td class="justify-center">
+                    <button type="button" data-id="<?php echo $row['Id_Venta'] ?>" class="btn btn-light shadow-0 botonEditar" data-bs-toggle="modala" data-bs-target="#actualizarVenta" style="background: transparent !important;">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="17" height="17" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7H5V5h7V3H5m12.78 1a.69.69 0 0 0-.48.2l-1.22 1.21l2.5 2.5L19.8 6.7c.26-.26.26-.7 0-.95L18.25 4.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L8 13.5V16h2.5l7.37-7.38l-2.5-2.5z" fill="currentColor"></path></svg>
+                        </span>
+                    </button>
+                    <button type="button" data-id="<?php echo $row['Id_Venta'] ?>" data-fecha="<?php echo $row['Fecha'] ?>" class="btn btn-light shadow-0 botonBorrar" style="background: transparent !important;">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="17" height="17" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12m2.46-7.12l1.41-1.41L12 12.59l2.12-2.12l1.41 1.41L13.41 14l2.12 2.12l-1.41 1.41L12 15.41l-2.12 2.12l-1.41-1.41L10.59 14l-2.13-2.12M15.5 4l-1-1h-5l-1 1H5v2h14V4h-3.5z" fill="currentColor"></path></svg>
+                        </span>
+                    </button>
                 </td>
-                <td>
-                    <div class="d-flex justify-content-end mb-5">
-                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#actualizarVenta" style="background: #68B0AB !important;">
-
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12m2.46-7.12l1.41-1.41L12 12.59l2.12-2.12l1.41 1.41L13.41 14l2.12 2.12l-1.41 1.41L12 15.41l-2.12 2.12l-1.41-1.41L10.59 14l-2.13-2.12M15.5 4l-1-1h-5l-1 1H5v2h14V4h-3.5z" fill="currentColor"></path></svg>
-                            </span>
-                        </button>
-                </td>
-
             </tr>
-<?php endwhile; ?>
+    <?php endwhile; ?>
         </tbody>
     </table>
 </div>
 <script src="../assets/js/mdb.min.js"></script>
+<?php 
+include('../Accion/modalVenta.php')
+?>
+<script>
+    const modal = new bootstrap.Modal(document.querySelector('#modalVenta'), {})
+    const titulo = document.querySelector("#modalVentaTitulo")
+    
+    function editarModal() {
+        titulo.innerText = 'Editar Venta'
+        modal.toggle()
+    }
+
+    function agregarModal(){
+        const titulo = document.querySelector("#modalVentaTitulo")
+        titulo.innerText = 'Agregar Venta'
+        modal.toggle()
+    }
+    
+    function borrarVenta(evento) {
+        window.evento = evento
+        Swal.fire({
+            title: '¿Desea borrar la venta?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire('Venta eliminada', '', 'success')
+            }
+        })
+    }
+
+    // Para los botones de editar
+    document.querySelectorAll('.botonEditar').forEach(boton => {
+        boton.addEventListener('click', editarModal)
+    })
+    // Para el boton de agregar
+    document.getElementById('agregarBoton').addEventListener('click', agregarModal)
+
+    // Para los botones de borrar
+    document.querySelectorAll('.botonBorrar').forEach(boton => {
+        boton.addEventListener('click', borrarVenta)
+    })
+</script>
+
 </body>
 </html>
