@@ -17,14 +17,15 @@
                     <div class="mb-3">
                         <label class="form-label" for="tipoPago">Tipo de Pago</label>
                         <select id="tipoPago" class="form-control" name="tipoPago">
-                            <option>Efectivo</option>
-                            <option>Tarjeta</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Tarjeta">Tarjeta</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="total">Total</label>
                         <input type="text" id="total" name="total" class="form-control" />
                     </div>
+                    <input type="hidden" name="id_venta" id="id_venta" value="" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -34,14 +35,3 @@
         </form>
     </div>
 </div>
-
-<script>
-    const modalVenta = document.getElementById('modalVenta')
-    const modalTituloFecha = document.getElementById('modalVentaFecha')
-    modalVenta.addEventListener('show.bs.modal', function () {
-        const hoy = new Date();
-        const fecha = `${hoy.getFullYear()}-${hoy.getMonth()+1}-${hoy.getDate()}`
-        const hora = `${hoy.getHours()}:${hoy.getMinutes()}`
-        modalTituloFecha.innerText = modalVenta.dataset.fecha ||  `${fecha} ${hora}`
-    })
-</script>

@@ -46,10 +46,9 @@ create table Secado
 
 Create table Venta
 (
-	Id_Venta int primary key auto_increment,
-    Fecha date,
-    Hora time,
+    Id_Venta int primary key auto_increment,
+    Fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     Cantidad int,
     Total float,
-    Tipo_Pago varchar(20)
+    Tipo_Pago varchar(20) check (Tipo_Pago IN ('Efectivo','Tarjeta'))
 );

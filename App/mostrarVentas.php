@@ -90,12 +90,12 @@ include ("../Conexion/cn.php");
                 <td><?php echo $row['Total'] ?></td>
                 <td><?php echo $row['Fecha'] ?></td>
                 <td class="justify-center">
-                    <button type="button" onclick="editarVenta(<?php echo $row['Id_Venta'] ?>, '<?php echo $row['Tipo_Pago'] ?>', <?php echo $row['Cantidad'] ?>, <?php echo $row['Total'] ?>, '<?php echo $row['Fecha'] ?>' )" class="btn btn-light shadow-0 botonEditar" data-bs-toggle="modala" data-bs-target="#actualizarVenta" style="background: transparent !important;">
+                    <button type="button" class="btn btn-light shadow-0 botonEditar" data-bs-toggle="modala" data-bs-target="#actualizarVenta" style="background: transparent !important;">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="17" height="17" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7H5V5h7V3H5m12.78 1a.69.69 0 0 0-.48.2l-1.22 1.21l2.5 2.5L19.8 6.7c.26-.26.26-.7 0-.95L18.25 4.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L8 13.5V16h2.5l7.37-7.38l-2.5-2.5z" fill="currentColor"></path></svg>
                         </span>
                     </button>
-                    <button type="button" onclick="borrarVenta" class="btn btn-light shadow-0 botonBorrar" style="background: transparent !important;">
+                    <button type="button" class="btn btn-light shadow-0 botonBorrar" style="background: transparent !important;">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" color="#b91c1c" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="17" height="17" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12m2.46-7.12l1.41-1.41L12 12.59l2.12-2.12l1.41 1.41L13.41 14l2.12 2.12l-1.41 1.41L12 15.41l-2.12 2.12l-1.41-1.41L10.59 14l-2.13-2.12M15.5 4l-1-1h-5l-1 1H5v2h14V4h-3.5z" fill="currentColor"></path></svg>
                         </span>
@@ -108,11 +108,12 @@ include ("../Conexion/cn.php");
 </div>
 <script src="../assets/js/mdb.min.js"></script>
 <?php 
-include('../Accion/modalVenta.php')
+include('../App/modalVenta.php')
 ?>
 <script>
     const modal = new bootstrap.Modal(document.querySelector('#modalVenta'), {})
     const titulo = document.querySelector("#modalVentaTitulo")
+    const modalTituloFecha = document.getElementById('modalVentaFecha')
 
     function actualizar(id, texto) {
         document.getElementById(id).value = texto
@@ -120,14 +121,26 @@ include('../Accion/modalVenta.php')
 
     function actualizarCampos(valores) {
         if( valores) {
-            
+            document.getElementById('cantidad').value = valores[2]
+            document.getElementById('tipoPago').value = valores[1]
+            document.getElementById('total').value = valores[3]
+        } else {
+            document.getElementById('cantidad').value = ''
+            document.getElementById('tipoPago').value = ''
+            document.getElementById('total').value = ''
+            document.getElementById('id_venta').value = ''
         }
     }
     
-    function editarVenta(...params) {
-        const [id, tipoPago, cantidad, total, fecha] = params
-        const modalTituloFecha = document.getElementById('modalVentaFecha')
-        modalTituloFecha.innerText = modalVenta.dataset.fecha = fecha
+    function editarVenta(event) {
+        const cells = []
+        event.target.closest('tr').cells.forEach(t => cells.push(t.innerText))
+        
+        modalTituloFecha.innerText = modalVenta.dataset.fecha = cells[4]
+        document.getElementById('formStatus').action = '../Accion/actualizarVenta.php'
+
+        actualizarCampos(cells)
+        document.getElementById('id_venta').value = cells[0]
 
         titulo.innerText = 'Editar Venta'
         modal.toggle()
@@ -136,6 +149,12 @@ include('../Accion/modalVenta.php')
     function agregarModal(){
         const titulo = document.querySelector("#modalVentaTitulo")
         titulo.innerText = 'Agregar Venta'
+        document.getElementById('formStatus').action = '../Accion/crearVenta.php'
+        const hoy = new Date();
+        const fecha = `${hoy.getFullYear()}-${hoy.getMonth()+1}-${hoy.getDate()}`
+        const hora = `${hoy.getHours()}:${hoy.getMinutes()}`
+        modalTituloFecha.innerText = `${fecha} ${hora}`
+        actualizarCampos()
         modal.toggle()
     }
     
@@ -175,6 +194,9 @@ include('../Accion/modalVenta.php')
     // Para los botones de borrar
     document.querySelectorAll('.botonBorrar').forEach(boton => {
         boton.addEventListener('click', borrarVenta)
+    })
+    document.querySelectorAll('.botonEditar').forEach(boton => {
+        boton.addEventListener('click', editarVenta)
     })
 </script>
 

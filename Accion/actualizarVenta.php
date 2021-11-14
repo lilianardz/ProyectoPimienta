@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cantidad = $_POST['cantidad'];
     $tipoPago = $_POST['tipoPago'];
     $id_venta = $_POST['id_venta'];
-
+    $total = $_POST['total'];
+    
     $stmt->execute();
     echo $stmt->error;
     header("location: ../App/mostrarVentas.php");
