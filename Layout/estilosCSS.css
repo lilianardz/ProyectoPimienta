@@ -1,11 +1,4 @@
-.rate,
-.star {
-    font-size: 25px;
-    color: orange;
-}
-.t-30 {
-    font-size: 25;
-}
+
 body {
   background-image: none;
   background-color: #d2f4e7; /* Used if the image is unavailable */

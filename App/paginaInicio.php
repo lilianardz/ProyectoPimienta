@@ -80,37 +80,9 @@ include("../Conexion/cn.php");
     </div>
 </nav>
 
-<!--<div class="form-group">-->
-<!--    <div class="container">-->
-<!--        <br>-->
-<!--                <h2>Bienvenido Usuario, ¿A dónde desea ir?</h2>-->
-<!--        <div class="row">-->
-<!--            <div class="col-6">-->
-<!--                <br>-->
-<!--                <div class="form-group">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-2">-->
-<!--                            <img src="../icons/icaptacion.png">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-6">-->
-<!--                <br>-->
-<!--                <div class="form-group">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-2">-->
-<!--                            <img src="../icons/iventa.png">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <br>
 <div class="center ">
-<h2>Bienvenido Usuario, ¿A dónde desea ir?</h2>
+<h2>Bienvenido, ¿A dónde desea ir?</h2>
 </div>
     <br>
 <div class="container">

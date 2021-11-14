@@ -18,7 +18,7 @@
             $_SESSION['Usuario'] = $nombre;
             $_SESSION['Id_Usuario']=$Id_Usuario;
             $_SESSION['Id_Rol']=$Id_Rol;
-            header("Location: mostrarVentas.php");
+            header("Location: paginaInicio.php");
         }else{
             header("location: Login.php?status=400");
         }
