@@ -2,13 +2,12 @@
 include ("../Conexion/cn.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $stmt = $conexion->prepare("update Venta set Fecha=?,Cantidad=?,Total=?,Tipo_Pago=?");
-    $stmt->bind_param("sids", $fecha, $cantidad, $total, $tipoPago);
+    $stmt = $conexion->prepare("update Venta set Cantidad=?,Total=?,Tipo_Pago=? where Id_Venta=?");
+    $stmt->bind_param("idsi", $cantidad, $total, $tipoPago, $id_venta);
 
     $cantidad = $_POST['cantidad'];
     $tipoPago = $_POST['tipoPago'];
-    $total = $_POST['total'];
-    $fecha = $_POST['fecha'];
+    $id_venta = $_POST['id_venta'];
 
     $stmt->execute();
     echo $stmt->error;
